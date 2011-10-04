@@ -22,7 +22,7 @@ else
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/timezones
  */
-date_default_timezone_set('America/Chicago');
+date_default_timezone_set('America/Mexico_City');
 
 /**
  * Set the default locale.
@@ -80,7 +80,11 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/',
+	'base_url' 	=> Kohana::$environment === 'PRODUCTION' ? 'http://www.issu.es':'http://localhost/Issues/',
+	'caching'   	=> Kohana::$environment === 'PRODUCTION',
+	'profile'   	=> Kohana::$environment !== 'PRODUCTION',
+	'index_file' 	=> FALSE,
+	'errors'	=> Kohana::$environment !== 'PRODUCTION',
 ));
 
 /**
